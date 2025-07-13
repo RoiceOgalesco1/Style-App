@@ -18,6 +18,10 @@ const Header = () => {
     navigate('/uploads');
   };
 
+  const handleCreate = () => {
+    navigate('/create');
+  };
+
   const handleSettings = () => {
     // Navigate to settings page (you can create this later)
     alert('Settings page coming soon!');
@@ -45,6 +49,13 @@ const Header = () => {
               className="px-4 py-2 text-[#2D2D2D] hover:text-[#769898] transition-colors rounded-lg hover:bg-[#F8F1E9]"
             >
               Uploads
+            </button>
+
+            <button
+              onClick={handleCreate}
+              className="px-4 py-2 text-[#2D2D2D] hover:text-[#769898] transition-colors rounded-lg hover:bg-[#F8F1E9]"
+            >
+              Create
             </button>
           </div>
 

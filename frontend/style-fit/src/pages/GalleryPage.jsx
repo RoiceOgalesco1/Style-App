@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Header from '../components/Header';
+import OutfitCard from '../components/OutfitCard';
+import PaginationButton from '../components/PaginationButton';
 
 const OUTFITS_PER_PAGE = 4;
 
@@ -117,60 +119,26 @@ const GalleryPage = () => {
           {/* Gallery Row */}
           <div className="flex flex-row justify-center gap-8">
             {outfitsToShow.map((outfit) => (
-              <div key={outfit.id} className="bg-white rounded-xl p-3 shadow-md border border-[#bda28d] flex flex-col items-center w-48">
-                {/* Outfit Header */}
-                <div className="mb-2 text-center">
-                  <h3 className="text-sm font-bold text-[#2D2D2D]">
-                    Outfit #{outfit.id}
-                  </h3>
-                  <p className="text-[#769898] text-xs">
-                    {formatDate(outfit.date)}
-                  </p>
-                </div>
-                {/* Photos Vertical Stack */}
-                <div className="flex flex-col gap-2 w-full">
-                  {Object.entries(outfit.photos).map(([index, photo]) => (
-                    <div key={index} className="relative group w-full">
-                      <div className="aspect-square rounded-md overflow-hidden border border-[#bda28d] w-full h-32">
-                        <img
-                          src={photo.preview}
-                          alt={`${getCategoryName(parseInt(index))} - ${photo.name}`}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-1">
-                        <p className="text-white text-xs font-medium leading-tight">
-                          {getCategoryName(parseInt(index))}
-                        </p>
-                        <p className="text-white/80 text-[11px] leading-tight">
-                          {photo.name}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                {/* Delete Button */}
-                <button
-                  onClick={() => handleDeleteOutfit(outfit.id)}
-                  className="mt-3 px-3 py-1 text-xs bg-red-100 text-red-600 rounded hover:bg-red-200 transition-colors"
-                >
-                  Delete
-                </button>
-              </div>
+              <OutfitCard
+                key={outfit.id}
+                outfit={outfit}
+                getCategoryName={getCategoryName}
+                formatDate={formatDate}
+                onDelete={handleDeleteOutfit}
+              />
             ))}
           </div>
 
           {/* Pagination and Upload New Button Row */}
           <div className="flex flex-row justify-center items-center gap-6 mt-10">
             {totalPages > 1 && (
-              <button
+              <PaginationButton
                 onClick={handlePrev}
                 disabled={page === 0}
                 className={`px-4 py-2 rounded bg-[#bda28d] text-white font-semibold shadow-md transition ${page === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#769898]'}`}
-                style={{ minWidth: '90px' }}
               >
                 Previous
-              </button>
+              </PaginationButton>
             )}
             <button
               onClick={() => window.location.href = '/uploads'}
@@ -179,14 +147,13 @@ const GalleryPage = () => {
               Upload New Outfit
             </button>
             {totalPages > 1 && (
-              <button
+              <PaginationButton
                 onClick={handleNext}
                 disabled={page === totalPages - 1}
                 className={`px-4 py-2 rounded bg-[#bda28d] text-white font-semibold shadow-md transition ${page === totalPages - 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#769898]'}`}
-                style={{ minWidth: '90px' }}
               >
                 Next
-              </button>
+              </PaginationButton>
             )}
           </div>
         </div>
