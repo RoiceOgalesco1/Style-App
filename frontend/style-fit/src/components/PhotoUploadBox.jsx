@@ -1,6 +1,15 @@
 import { useState } from 'react';
 
 const PhotoUploadBox = ({ id, photoNumber, onPhotoChange, onPhotoDelete, photo, preview }) => {
+  const getCategoryName = (photoNumber) => {
+    switch (photoNumber) {
+      case 1: return 'Headwear';
+      case 2: return 'Top';
+      case 3: return 'Bottom';
+      case 4: return 'Footwear';
+      default: return `Photo ${photoNumber}`;
+    }
+  };
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -19,7 +28,7 @@ const PhotoUploadBox = ({ id, photoNumber, onPhotoChange, onPhotoDelete, photo, 
   return (
     <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#bda28d]">
       <h3 className="text-2xl font-bold text-[#2D2D2D] mb-4 text-center">
-        Photo {photoNumber}
+        {getCategoryName(photoNumber)}
       </h3>
       <div className="space-y-4">
         <div className="relative">
@@ -38,7 +47,7 @@ const PhotoUploadBox = ({ id, photoNumber, onPhotoChange, onPhotoDelete, photo, 
               <div className="w-full h-full flex items-center justify-center relative">
                 <img
                   src={preview}
-                  alt={`Preview ${photoNumber}`}
+                  alt={`Preview ${getCategoryName(photoNumber)}`}
                   className="max-w-full max-h-full object-contain rounded-lg"
                 />
                 {/* Delete Button Overlay */}

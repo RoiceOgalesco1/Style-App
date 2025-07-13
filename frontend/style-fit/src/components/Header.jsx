@@ -18,11 +18,11 @@ const Header = () => {
   };
 
   return (
-          <header className="bg-white shadow-md border-b border-[#bda28d]">
-        <div className="w-full px-4 py-4">
-          <div className="flex items-center justify-end">
-            {/* Navigation Buttons */}
-            <div className="flex items-center space-x-4">
+              <header className="bg-[#f9e8ce] shadow-md border-b border-[#bda28d]">
+      <div className="w-full px-4 py-4">
+        <div className="flex items-center justify-end">
+          {/* Navigation Buttons */}
+          <div className="flex items-center space-x-4">
             <button
               onClick={handleHome}
               className="flex items-center space-x-2 px-4 py-2 text-[#2D2D2D] hover:text-[#769898] transition-colors rounded-lg hover:bg-[#F8F1E9]"

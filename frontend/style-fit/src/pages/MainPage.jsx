@@ -3,7 +3,7 @@ import PhotoUploadBox from '../components/PhotoUploadBox';
 import Header from '../components/Header';
 
 const MainPage = () => {
-  const [numberOfBoxes, setNumberOfBoxes] = useState(2);
+  const [numberOfBoxes, setNumberOfBoxes] = useState(4);
   const [photos, setPhotos] = useState({});
   const [previews, setPreviews] = useState({});
 
@@ -75,36 +75,6 @@ const MainPage = () => {
           <p className="text-lg text-[#769898] max-w-2xl mx-auto mb-8">
             Upload photos to get started. Mix and match to build your outfit.
           </p>
-          
-          {/* Number of Boxes Dropdown */}
-          <div className="flex items-center justify-center space-x-4">
-            <label htmlFor="boxCount" className="text-lg font-semibold text-[#2D2D2D]">
-              Number of Photos:
-            </label>
-            <select
-              id="boxCount"
-              value={numberOfBoxes}
-              onChange={(e) => {
-                const newCount = parseInt(e.target.value);
-                setNumberOfBoxes(newCount);
-                // Clear photos that are no longer needed
-                const newPhotos = {};
-                const newPreviews = {};
-                for (let i = 0; i < newCount; i++) {
-                  if (photos[i]) newPhotos[i] = photos[i];
-                  if (previews[i]) newPreviews[i] = previews[i];
-                }
-                setPhotos(newPhotos);
-                setPreviews(newPreviews);
-              }}
-              className="px-4 py-2 border border-[#bda28d] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#769898] bg-white text-[#2D2D2D] shadow-sm"
-            >
-              <option value={1}>1 Photo</option>
-              <option value={2}>2 Photos</option>
-              <option value={3}>3 Photos</option>
-              <option value={4}>4 Photos</option>
-            </select>
-          </div>
         </div>
 
         {/* Upload Form */}
@@ -136,14 +106,6 @@ const MainPage = () => {
             <li className="flex items-start">
               <span className="text-[#d49f91] mr-2">•</span>
               Supported formats: JPG, PNG
-            </li>
-            <li className="flex items-start">
-              <span className="text-[#d49f91] mr-2">•</span>
-              Maximum file size: 10MB per photo
-            </li>
-            <li className="flex items-start">
-              <span className="text-[#d49f91] mr-2">•</span>
-              All {numberOfBoxes} photo{numberOfBoxes > 1 ? 's are' : ' is'} required to proceed
             </li>
           </ul>
         </div>
