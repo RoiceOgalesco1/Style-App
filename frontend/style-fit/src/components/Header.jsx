@@ -9,7 +9,7 @@ const Header = () => {
   };
 
   const handleHome = () => {
-    navigate('/main');
+    navigate('/uploads');
   };
 
   const handleSettings = () => {

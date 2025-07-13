@@ -26,8 +26,8 @@ const AuthForm = ({ type }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (type === 'login') {
-      // Navigate to main page after successful login
-      navigate('/main');
+      // Navigate to uploads page after successful login
+      navigate('/uploads');
     } else {
       alert('Registration successful! (test message only)');
     }

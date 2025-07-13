@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PhotoUploadBox from '../components/PhotoUploadBox';
 import Header from '../components/Header';
 
-const MainPage = () => {
+const UploadsPage = () => {
   const [numberOfBoxes, setNumberOfBoxes] = useState(4);
   const [photos, setPhotos] = useState({});
   const [previews, setPreviews] = useState({});
@@ -115,4 +115,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage; 
+export default UploadsPage; 
