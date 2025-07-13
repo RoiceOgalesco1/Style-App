@@ -28,12 +28,12 @@ const UploadsPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const uploadedPhotos = Object.keys(photos);
-    if (uploadedPhotos.length === numberOfBoxes) {
+    if (uploadedPhotos.length > 0) {
       alert('Photos uploaded successfully! (This is a test message)');
       // Here you would typically send the photos to your backend
       console.log('Photos:', photos);
     } else {
-      alert(`Please upload all ${numberOfBoxes} photos before submitting.`);
+      alert('Please upload at least one photo before submitting.');
     }
   };
 
@@ -85,7 +85,7 @@ const UploadsPage = () => {
           <div className="text-center">
             <button
               type="submit"
-              disabled={Object.keys(photos).length !== numberOfBoxes}
+              disabled={Object.keys(photos).length === 0}
               className="px-8 py-3 bg-[#d49f91] text-white font-semibold rounded-lg shadow-md hover:bg-[#769898] transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Add Photos
