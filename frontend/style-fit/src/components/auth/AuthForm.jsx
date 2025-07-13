@@ -25,7 +25,12 @@ const AuthForm = ({ type }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`${type === 'login' ? 'Login' : 'Registration'} successful! (test message only)`);
+    if (type === 'login') {
+      // Navigate to main page after successful login
+      navigate('/main');
+    } else {
+      alert('Registration successful! (test message only)');
+    }
   };
 
   const isLogin = type === 'login';
