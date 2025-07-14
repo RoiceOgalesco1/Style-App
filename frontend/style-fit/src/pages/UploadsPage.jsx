@@ -54,11 +54,11 @@ const UploadsPage = () => {
       1: 'grid-cols-1',
       2: 'grid-cols-1 md:grid-cols-2',
       3: 'grid-cols-1 md:grid-cols-3',
-      4: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
+      4: 'grid-upload'
     };
 
     return (
-      <div className={`grid ${gridClasses[numberOfBoxes]} gap-8`}>
+      <div className={`grid ${gridClasses[numberOfBoxes]}`}>
         {Array.from({ length: numberOfBoxes }, (_, index) => (
           <PhotoUploadBox
             key={index}
@@ -77,15 +77,13 @@ const UploadsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F1E9]">
+    <div className="page-container">
       <Header />
-      <div className="py-12 px-4">
+      <div className="page-content">
         <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-[#2D2D2D] mb-4">
-            Welcome to Vesture
-          </h1>
-          <p className="text-lg text-[#769898] max-w-2xl mx-auto mb-8">
+        <div className="page-header">
+          <h1>Welcome to Vesture</h1>
+          <p className="page-description">
             Upload photos to get started. Mix and match to build your outfit.
           </p>
         </div>
@@ -108,11 +106,9 @@ const UploadsPage = () => {
         </form>
 
         {/* Instructions */}
-        <div className="mt-12 bg-white rounded-2xl p-6 shadow-lg border border-[#bda28d]">
-          <h3 className="text-xl font-bold text-[#2D2D2D] mb-4">
-            Upload Guidelines
-          </h3>
-          <ul className="space-y-2 text-[#769898]">
+        <div className="mt-12 card">
+          <h3>Upload Guidelines</h3>
+          <ul className="space-y-2 text-muted">
             <li className="flex items-start">
               <span className="text-[#d49f91] mr-2">•</span>
               Upload clear, well-lit photos for best results

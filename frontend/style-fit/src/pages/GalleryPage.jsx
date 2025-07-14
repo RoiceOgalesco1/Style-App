@@ -94,15 +94,13 @@ const GalleryPage = () => {
   const outfitsToShow = uploadedOutfits.slice(page * OUTFITS_PER_PAGE, (page + 1) * OUTFITS_PER_PAGE);
 
   return (
-    <div className="min-h-screen bg-[#F8F1E9]">
+    <div className="page-container">
       <Header />
       <div className="py-10 px-4">
         <div className="max-w-full mx-auto">
-          <div className="text-center mb-10">
-            <h1 className="text-3xl font-extrabold text-[#2D2D2D] mb-2">
-              Your Outfit Gallery
-            </h1>
-            <p className="text-base text-[#769898] max-w-2xl mx-auto">
+          <div className="page-header">
+            <h1 className="text-3xl">Your Outfit Gallery</h1>
+            <p className="page-description text-base">
               View and manage all your uploaded outfit combinations.
             </p>
           </div>
@@ -128,7 +126,7 @@ const GalleryPage = () => {
                 disabled={page === 0}
                 variant="secondary"
                 size="medium"
-                className="min-w-[90px]"
+                className="min-w-90"
               >
                 Previous
               </Button>
@@ -146,7 +144,7 @@ const GalleryPage = () => {
                 disabled={page === totalPages - 1}
                 variant="secondary"
                 size="medium"
-                className="min-w-[90px]"
+                className="min-w-90"
               >
                 Next
               </Button>

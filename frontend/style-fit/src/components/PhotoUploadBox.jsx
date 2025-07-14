@@ -17,14 +17,14 @@ const PhotoUploadBox = ({ id, photoNumber, onPhotoChange, onPhotoDelete, photo, 
   };
 
   return (
-    <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#bda28d]">
-      <h3 className="text-2xl font-bold text-[#2D2D2D] mb-4 text-center">
+    <div className="card-large">
+      <h3 className="text-center">
         {getCategoryName(photoNumber)}
       </h3>
       <div className="space-y-4">
         {/* Image Name Input */}
         <div>
-          <label className="block text-sm font-medium text-[#2D2D2D] mb-1">
+          <label>
             Image Name
           </label>
           <input
@@ -32,7 +32,6 @@ const PhotoUploadBox = ({ id, photoNumber, onPhotoChange, onPhotoDelete, photo, 
             value={imageName || ''}
             onChange={(e) => onImageNameChange(id, e.target.value)}
             placeholder={`Enter ${getCategoryName(photoNumber).toLowerCase()} name...`}
-            className="w-full px-3 py-2 border border-[#bda28d] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d49f91] focus:border-transparent text-sm"
           />
         </div>
 
@@ -40,12 +39,11 @@ const PhotoUploadBox = ({ id, photoNumber, onPhotoChange, onPhotoDelete, photo, 
           type="file"
           accept="image/*"
           onChange={handlePhotoChange}
-          className="hidden"
           id={`photo${id}`}
         />
         <label
           htmlFor={`photo${id}`}
-          className="block w-full h-64 border-2 border-dashed border-[#bda28d] rounded-lg cursor-pointer hover:border-[#769898] transition-colors"
+          className="upload-area"
         >
           {preview ? (
             <div className="w-full h-full flex items-center justify-center relative">
@@ -62,7 +60,7 @@ const PhotoUploadBox = ({ id, photoNumber, onPhotoChange, onPhotoDelete, photo, 
                   e.stopPropagation();
                   handleDelete();
                 }}
-                className="absolute top-2 right-2 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-colors shadow-lg"
+                className="delete-button"
                 title="Delete photo"
               >
                 <svg
@@ -81,9 +79,9 @@ const PhotoUploadBox = ({ id, photoNumber, onPhotoChange, onPhotoDelete, photo, 
               </button>
             </div>
           ) : (
-            <div className="w-full h-full flex flex-col items-center justify-center text-[#769898]">
+            <div className="upload-content">
               <svg
-                className="w-12 h-12 mb-4"
+                className="upload-icon"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -95,13 +93,13 @@ const PhotoUploadBox = ({ id, photoNumber, onPhotoChange, onPhotoDelete, photo, 
                   d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                 />
               </svg>
-              <p className="text-lg font-medium">Click to upload</p>
-              <p className="text-sm text-[#bda28d]">or drag and drop</p>
+              <p className="upload-text">Click to upload</p>
+              <p className="upload-subtext">or drag and drop</p>
             </div>
           )}
         </label>
         {photo && (
-          <p className="text-sm text-[#769898] text-center">
+          <p className="text-muted text-center text-small">
             {imageName || photo.name}
           </p>
         )}

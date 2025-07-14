@@ -13,15 +13,15 @@ const OutfitPreview = ({
 }) => {
   return (
     <div
-      className="bg-white rounded-2xl p-4 shadow-lg border border-[#bda28d] flex flex-col"
+      className="card flex flex-col"
       style={{ height: '770px', minHeight: '770px', maxHeight: '770px' }}
     >
       <div className="flex-1 overflow-y-auto">
-        <h2 className="text-2xl font-bold text-[#2D2D2D] mb-2">Outfit Preview</h2>
+        <h2>Outfit Preview</h2>
         
         {/* Outfit Name Input */}
         <div className="mb-2">
-          <label className="block text-sm font-medium text-[#2D2D2D] mb-1">
+          <label>
             Outfit Name
           </label>
           <input
@@ -29,7 +29,7 @@ const OutfitPreview = ({
             value={outfitName}
             onChange={(e) => onOutfitNameChange(e.target.value)}
             placeholder="Enter outfit name..."
-            className="w-full px-3 py-1 border border-[#bda28d] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d49f91] focus:border-transparent text-sm"
+            className="py-1"
           />
         </div>
         
@@ -51,7 +51,7 @@ const OutfitPreview = ({
             onClick={onSaveOutfit}
             variant="primary"
             size="medium"
-            className="w-full"
+            className="btn-full"
           >
             Save Outfit
           </Button>
@@ -59,7 +59,7 @@ const OutfitPreview = ({
             onClick={onClearOutfit}
             variant="secondary"
             size="medium"
-            className="w-full"
+            className="btn-full"
           >
             Clear Outfit
           </Button>

@@ -1,1 +1,277 @@
 @import "tailwindcss";
+
+@layer base {
+  /* Base styles for common elements */
+  body {
+    @apply bg-[#F8F1E9] text-[#2D2D2D];
+  }
+
+  h1 {
+    @apply text-4xl font-extrabold text-[#2D2D2D] mb-4;
+  }
+
+  h2 {
+    @apply text-2xl font-bold text-[#2D2D2D] mb-2;
+  }
+
+  h3 {
+    @apply text-xl font-bold text-[#2D2D2D] mb-4;
+  }
+
+  p {
+    @apply text-[#769898];
+  }
+
+  label {
+    @apply block text-sm font-medium text-[#2D2D2D] mb-1;
+  }
+
+  input[type="text"] {
+    @apply w-full px-3 py-2 border border-[#bda28d] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d49f91] focus:border-transparent text-sm;
+  }
+
+  input[type="file"] {
+    @apply hidden;
+  }
+}
+
+@layer components {
+  /* Layout Components */
+  .page-container {
+    @apply min-h-screen bg-[#F8F1E9];
+  }
+
+  .page-content {
+    @apply py-12 px-4;
+  }
+
+  .page-wrapper {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .page-header {
+    @apply text-center mb-12;
+  }
+
+  .page-title {
+    @apply text-4xl font-extrabold text-[#2D2D2D] mb-4;
+  }
+
+  .page-description {
+    @apply text-lg text-[#769898] max-w-2xl mx-auto mb-8;
+  }
+
+  /* Card Components */
+  .card {
+    @apply bg-white rounded-2xl p-4 shadow-lg border border-[#bda28d];
+  }
+
+  .card-large {
+    @apply bg-white rounded-2xl p-8 shadow-lg border border-[#bda28d];
+  }
+
+  .card-small {
+    @apply bg-white rounded-xl p-3 shadow-md border border-[#bda28d];
+  }
+
+  /* Button Components */
+  .btn {
+    @apply font-semibold rounded-lg shadow-md transition disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-[#d49f91] text-white hover:bg-[#769898];
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 text-[#2D2D2D] hover:bg-gray-300;
+  }
+
+  .btn-danger {
+    @apply bg-red-100 text-red-600 hover:bg-red-200;
+  }
+
+  .btn-small {
+    @apply px-3 py-1 text-xs;
+  }
+
+  .btn-medium {
+    @apply px-4 py-2 text-sm;
+  }
+
+  .btn-large {
+    @apply px-6 py-3 text-base;
+  }
+
+  .btn-full {
+    @apply w-full;
+  }
+
+  /* Category Badge Components */
+  .category-badge {
+    @apply px-2 py-1 rounded text-xs font-medium text-white;
+  }
+
+  .category-badge-headwear {
+    @apply bg-[#769898];
+  }
+
+  .category-badge-top {
+    @apply bg-[#d49f91];
+  }
+
+  .category-badge-bottom {
+    @apply bg-[#bda28d];
+  }
+
+  .category-badge-footwear {
+    @apply bg-[#769898];
+  }
+
+  .category-badge-large {
+    @apply px-3 py-0.5 rounded-full;
+  }
+
+  /* Image Components */
+  .image-container {
+    @apply relative w-full h-24;
+  }
+
+  .image-container-large {
+    @apply relative w-full h-32;
+  }
+
+  .image-container-square {
+    @apply aspect-square rounded-md overflow-hidden border border-[#bda28d] w-full h-32;
+  }
+
+  .image {
+    @apply w-full h-full object-cover;
+  }
+
+  .image-overlay {
+    @apply absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-1;
+  }
+
+  .image-overlay-rounded {
+    @apply absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-1 rounded-b-md;
+  }
+
+  .image-text {
+    @apply text-white text-xs font-medium leading-tight;
+  }
+
+  .image-subtext {
+    @apply text-white/80 text-[11px] leading-tight;
+  }
+
+  /* Selection Components */
+  .selectable-image {
+    @apply cursor-pointer rounded-lg overflow-hidden border-2 transition-all;
+  }
+
+  .selectable-image-selected {
+    @apply border-[#d49f91] ring-2 ring-[#d49f91];
+  }
+
+  .selectable-image-unselected {
+    @apply border-[#bda28d] hover:border-[#769898];
+  }
+
+  .selection-indicator {
+    @apply absolute top-1 right-1 w-5 h-5 bg-[#d49f91] rounded-full flex items-center justify-center;
+  }
+
+  /* Upload Components */
+  .upload-area {
+    @apply block w-full h-64 border-2 border-dashed border-[#bda28d] rounded-lg cursor-pointer hover:border-[#769898] transition-colors;
+  }
+
+  .upload-content {
+    @apply w-full h-full flex flex-col items-center justify-center text-[#769898];
+  }
+
+  .upload-icon {
+    @apply w-12 h-12 mb-4;
+  }
+
+  .upload-text {
+    @apply text-lg font-medium;
+  }
+
+  .upload-subtext {
+    @apply text-sm text-[#bda28d];
+  }
+
+  .delete-button {
+    @apply absolute top-2 right-2 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-colors shadow-lg;
+  }
+
+  /* Grid Components */
+  .grid-responsive {
+    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3;
+  }
+
+  .grid-upload {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8;
+  }
+
+  /* Text Components */
+  .text-muted {
+    @apply text-[#769898];
+  }
+
+  .text-small {
+    @apply text-xs;
+  }
+
+  .text-center {
+    @apply text-center;
+  }
+
+  /* Spacing Components */
+  .space-y-2 {
+    @apply space-y-2;
+  }
+
+  .space-y-4 {
+    @apply space-y-4;
+  }
+
+  .space-y-8 {
+    @apply space-y-8;
+  }
+
+  /* Border Components */
+  .border-dashed-placeholder {
+    @apply h-20 bg-gray-100 rounded-md flex items-center justify-center border-2 border-dashed border-[#bda28d];
+  }
+
+  /* Remove Button */
+  .remove-button {
+    @apply text-red-500 hover:text-red-700 text-xs;
+  }
+}
+
+@layer utilities {
+  /* Custom utilities for specific use cases */
+  .text-truncate {
+    @apply truncate;
+  }
+
+  .min-w-90 {
+    min-width: 90px;
+  }
+
+  .h-770 {
+    height: 770px;
+  }
+
+  .min-h-770 {
+    min-height: 770px;
+  }
+
+  .max-h-770 {
+    max-height: 770px;
+  }
+}

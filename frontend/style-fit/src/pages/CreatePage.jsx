@@ -95,15 +95,13 @@ const CreatePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F1E9]">
+    <div className="page-container">
       <Header />
-      <div className="py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-extrabold text-[#2D2D2D] mb-4">
-              Create Your Outfit
-            </h1>
-            <p className="text-lg text-[#769898] max-w-2xl mx-auto mb-8">
+      <div className="page-content">
+        <div className="page-wrapper">
+          <div className="page-header">
+            <h1>Create Your Outfit</h1>
+            <p className="page-description">
               Select items from your uploaded photos to create a new outfit combination.
             </p>
           </div>

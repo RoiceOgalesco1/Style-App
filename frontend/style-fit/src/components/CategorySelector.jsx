@@ -9,19 +9,29 @@ const CategorySelector = ({
   onSelectItem,
   onUploadClick 
 }) => {
+  const getCategoryBadgeClass = (categoryKey) => {
+    const badgeClasses = {
+      headwear: 'category-badge-headwear',
+      top: 'category-badge-top',
+      bottom: 'category-badge-bottom',
+      footwear: 'category-badge-footwear'
+    };
+    return `category-badge category-badge-large ${badgeClasses[categoryKey] || 'category-badge-headwear'}`;
+  };
+
   return (
-    <div className="bg-white rounded-2xl p-4 shadow-lg border border-[#bda28d]">
+    <div className="card">
       <div className="flex items-center mb-4">
-        <span className={`px-3 py-0.5 rounded-full text-xs font-medium text-white ${category.color}`}>
+        <span className={getCategoryBadgeClass(category.key)}>
           {category.name}
         </span>
-        <span className="ml-2 text-xs text-[#769898]">
+        <span className="ml-2 text-muted text-small">
           {images.length} items available
         </span>
       </div>
 
       {images.length > 0 ? (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        <div className="grid-responsive">
           {images.map(image => (
             <ImageCard
               key={image.id}
@@ -33,7 +43,7 @@ const CategorySelector = ({
         </div>
       ) : (
         <div className="text-center py-6">
-          <p className="text-[#769898] mb-2">No {category.name.toLowerCase()} items uploaded yet.</p>
+          <p className="text-muted mb-2">No {category.name.toLowerCase()} items uploaded yet.</p>
           <Button
             onClick={onUploadClick}
             variant="primary"
