@@ -1,5 +1,5 @@
 import React from 'react';
-import OutfitPhotoVertical from './OutfitPhotoVertical';
+import Button from './Button';
 
 const OutfitCard = ({ outfit, getCategoryName, formatDate, onDelete }) => {
   return (
@@ -16,21 +16,34 @@ const OutfitCard = ({ outfit, getCategoryName, formatDate, onDelete }) => {
       {/* Photos Vertical Stack */}
       <div className="flex flex-col gap-2 w-full">
         {Object.entries(outfit.photos).map(([index, photo]) => (
-          <OutfitPhotoVertical
-            key={index}
-            photo={photo}
-            category={getCategoryName(parseInt(index))}
-            name={photo.name}
-          />
+          <div key={index} className="relative group w-full">
+            <div className="aspect-square rounded-md overflow-hidden border border-[#bda28d] w-full h-32">
+              <img
+                src={photo.preview}
+                alt={`${getCategoryName(parseInt(index))} - ${photo.name}`}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-1">
+                <p className="text-white text-xs font-medium leading-tight">
+                  {getCategoryName(parseInt(index))}
+                </p>
+                <p className="text-white/80 text-[11px] leading-tight">
+                  {photo.name}
+                </p>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
       {/* Delete Button */}
-      <button
+      <Button
         onClick={() => onDelete(outfit.id)}
-        className="mt-3 px-3 py-1 text-xs bg-red-100 text-red-600 rounded hover:bg-red-200 transition-colors"
+        variant="danger"
+        size="small"
+        className="mt-3"
       >
         Delete
-      </button>
+      </Button>
     </div>
   );
 };

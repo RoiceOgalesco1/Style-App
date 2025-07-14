@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PhotoUploadBox from '../components/PhotoUploadBox';
 import Header from '../components/Header';
+import Button from '../components/Button';
 
 const UploadsPage = () => {
   const [numberOfBoxes, setNumberOfBoxes] = useState(4);
@@ -67,7 +68,6 @@ const UploadsPage = () => {
       <Header />
       <div className="py-12 px-4">
         <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-extrabold text-[#2D2D2D] mb-4">
             Welcome to Vesture
@@ -83,13 +83,14 @@ const UploadsPage = () => {
 
           {/* Submit Button */}
           <div className="text-center">
-            <button
+            <Button
               type="submit"
               disabled={Object.keys(photos).length === 0}
-              className="px-8 py-3 bg-[#d49f91] text-white font-semibold rounded-lg shadow-md hover:bg-[#769898] transition disabled:opacity-50 disabled:cursor-not-allowed"
+              variant="primary"
+              size="large"
             >
               Add Photos
-            </button>
+            </Button>
           </div>
         </form>
 

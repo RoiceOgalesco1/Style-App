@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Header from '../components/Header';
 import OutfitCard from '../components/OutfitCard';
-import PaginationButton from '../components/PaginationButton';
+import Button from '../components/Button';
+import { getCategoryName } from '../utils/categoryUtils';
 
 const OUTFITS_PER_PAGE = 4;
 
@@ -72,16 +73,6 @@ const GalleryPage = () => {
   const [page, setPage] = useState(0);
   const totalPages = Math.ceil(uploadedOutfits.length / OUTFITS_PER_PAGE);
 
-  const getCategoryName = (photoNumber) => {
-    switch (photoNumber) {
-      case 0: return 'Headwear';
-      case 1: return 'Top';
-      case 2: return 'Bottom';
-      case 3: return 'Footwear';
-      default: return `Photo ${photoNumber + 1}`;
-    }
-  };
-
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
@@ -132,28 +123,33 @@ const GalleryPage = () => {
           {/* Pagination and Upload New Button Row */}
           <div className="flex flex-row justify-center items-center gap-6 mt-10">
             {totalPages > 1 && (
-              <PaginationButton
+              <Button
                 onClick={handlePrev}
                 disabled={page === 0}
-                className={`px-4 py-2 rounded bg-[#bda28d] text-white font-semibold shadow-md transition ${page === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#769898]'}`}
+                variant="secondary"
+                size="medium"
+                className="min-w-[90px]"
               >
                 Previous
-              </PaginationButton>
+              </Button>
             )}
-            <button
+            <Button
               onClick={() => window.location.href = '/uploads'}
-              className="px-6 py-2 bg-[#d49f91] text-white font-semibold rounded-lg shadow-md hover:bg-[#769898] transition text-base"
+              variant="primary"
+              size="large"
             >
               Upload New Outfit
-            </button>
+            </Button>
             {totalPages > 1 && (
-              <PaginationButton
+              <Button
                 onClick={handleNext}
                 disabled={page === totalPages - 1}
-                className={`px-4 py-2 rounded bg-[#bda28d] text-white font-semibold shadow-md transition ${page === totalPages - 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#769898]'}`}
+                variant="secondary"
+                size="medium"
+                className="min-w-[90px]"
               >
                 Next
-              </PaginationButton>
+              </Button>
             )}
           </div>
         </div>
