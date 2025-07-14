@@ -1,6 +1,6 @@
 import { getCategoryName } from '../utils/categoryUtils';
 
-const PhotoUploadBox = ({ id, photoNumber, onPhotoChange, onPhotoDelete, photo, preview }) => {
+const PhotoUploadBox = ({ id, photoNumber, onPhotoChange, onPhotoDelete, photo, preview, imageName, onImageNameChange }) => {
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -22,6 +22,20 @@ const PhotoUploadBox = ({ id, photoNumber, onPhotoChange, onPhotoDelete, photo, 
         {getCategoryName(photoNumber)}
       </h3>
       <div className="space-y-4">
+        {/* Image Name Input */}
+        <div>
+          <label className="block text-sm font-medium text-[#2D2D2D] mb-1">
+            Image Name
+          </label>
+          <input
+            type="text"
+            value={imageName || ''}
+            onChange={(e) => onImageNameChange(id, e.target.value)}
+            placeholder={`Enter ${getCategoryName(photoNumber).toLowerCase()} name...`}
+            className="w-full px-3 py-2 border border-[#bda28d] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d49f91] focus:border-transparent text-sm"
+          />
+        </div>
+
         <input
           type="file"
           accept="image/*"
@@ -88,7 +102,7 @@ const PhotoUploadBox = ({ id, photoNumber, onPhotoChange, onPhotoDelete, photo, 
         </label>
         {photo && (
           <p className="text-sm text-[#769898] text-center">
-            {photo.name}
+            {imageName || photo.name}
           </p>
         )}
       </div>

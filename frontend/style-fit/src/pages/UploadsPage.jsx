@@ -7,6 +7,7 @@ const UploadsPage = () => {
   const [numberOfBoxes, setNumberOfBoxes] = useState(4);
   const [photos, setPhotos] = useState({});
   const [previews, setPreviews] = useState({});
+  const [imageNames, setImageNames] = useState({});
 
   const handlePhotoChange = (id, file, preview) => {
     setPhotos(prev => ({ ...prev, [id]: file }));
@@ -24,6 +25,15 @@ const UploadsPage = () => {
       delete newPreviews[id];
       return newPreviews;
     });
+    setImageNames(prev => {
+      const newNames = { ...prev };
+      delete newNames[id];
+      return newNames;
+    });
+  };
+
+  const handleImageNameChange = (id, name) => {
+    setImageNames(prev => ({ ...prev, [id]: name }));
   };
 
   const handleSubmit = (e) => {
@@ -33,6 +43,7 @@ const UploadsPage = () => {
       alert('Photos uploaded successfully! (This is a test message)');
       // Here you would typically send the photos to your backend
       console.log('Photos:', photos);
+      console.log('Image Names:', imageNames);
     } else {
       alert('Please upload at least one photo before submitting.');
     }
@@ -55,8 +66,10 @@ const UploadsPage = () => {
             photoNumber={index + 1}
             onPhotoChange={handlePhotoChange}
             onPhotoDelete={handlePhotoDelete}
+            onImageNameChange={handleImageNameChange}
             photo={photos[index]}
             preview={previews[index]}
+            imageName={imageNames[index]}
           />
         ))}
       </div>
